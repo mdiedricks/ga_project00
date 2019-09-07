@@ -1,12 +1,22 @@
 //new game function should start a new game object
-function NewGame(player1, player2){
-    this.player1 = player1;
-    this.player2 = player2;
+const NewGame = function (player1, player2){
+    this.fstPlayer = player1;
+    this.secPlayer = player2;
+    this.curPlayer = fstPlayer;
+    //change active player after a symbol has been placed
+    this.swapPlayer = function(){
+        if (curPlayer === fstPlayer){
+            curPlayer = secPlayer;
+        } else{
+            curPlayer = fstPlayer;
+        }
+    },
+    this.
 }
 
 //add a new player to the list
 function newPlayer(name, ){
-    pass;
+    let 
 }
 
 //choose player names for X and O
@@ -16,11 +26,6 @@ function selPlayers(playerX, playerO){
 
 //place a symbol in a grid cell
 function makeMove(curPlayer, input){
-    console.log(curPlayer);
-}
-
-//change active player after a symbol has been placed
-function swapPlayer(curPlayer){
     console.log(curPlayer);
 }
 
