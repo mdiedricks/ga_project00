@@ -1,0 +1,26 @@
+#top{
+    border-bottom: 2px solid blue;
+}
+
+#cen{
+    border-left: 2px solid blue;
+    border-right: 2px solid blue;
+}
+
+#bot{
+    border-top: 2px solid blue;
+
+}
+
+#left{
+    border-right: 2px solid blue;
+}
+
+#mid{
+    border-top: 2px solid blue;
+    border-bottom: 2px solid blue;
+}
+
+#right{
+    border-left: 2px solid blue;
+}

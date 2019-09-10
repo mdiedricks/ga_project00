@@ -12,7 +12,7 @@ function newGame (player1, player2){
 
     //create array values for the game board
     let gameBoard = [" "," "," "," "," "," "," "," "," "];
-    let gameCells = ["#topLeft","#topMid","#topRight","#midLeft","#midMid","#midRight","#botLeft","#botMid","#botRight" ];
+    // let gameCells = ["#topLeft","#topMid","#topRight","#midLeft","#midMid","#midRight","#botLeft","#botMid","#botRight" ];
 
     // $("#topLeft").html('gameBoard[0]');
     // $("#topMid").html('gameBoard[1]');
@@ -29,18 +29,18 @@ function newGame (player1, player2){
     return;
 }
 
-//MAKE MOVE - assign an input value to the gameboard array
-// function makeMove (curPlayer, cell){
-//     let curPlayer = playerOne
-//     //set symbol based on who is current player
-//     if (curPlayer === player1){
-//         let symbol = 'X';
-//         } else {
-//         let symbol = 'O';
-//     }
-//     //assign symbol to cell value
-//     let gameboard[cell] = symbol;
-// }
+MAKE MOVE - assign an input value to the gameboard array
+function makeMove (curPlayer, cell){
+    let curPlayer = playerOne;
+    //set symbol based on who is current player
+    if (curPlayer === player1){
+        let symbol = 'X';
+        } else {
+        let symbol = 'O';
+    }
+    //assign symbol to cell value
+    let gameboard[cell] = symbol;
+}
 
 
 //WIN CHECK - check if a win is possible
