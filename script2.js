@@ -11,18 +11,18 @@ function newGame (player1, player2){
     let curPlayer = playerOne;
 
     //create array values for the game board
-    let gameBoard = [" "," ","5"," "," "," "," "," "," "];
+    let gameBoard = [" "," "," "," "," "," "," "," "," "];
     let gameCells = ["#topLeft","#topMid","#topRight","#midLeft","#midMid","#midRight","#botLeft","#botMid","#botRight" ];
 
-    $("#topLeft").html('gameBoard[0]');
-    $("#topMid").html('gameBoard[1]');
-    $("#topRight").html('gameBoard[2]');
-    $("#midLeft").html('gameBoard[3]');
-    $("#midMid").html('gameBoard[4]');
-    $("#midRight").html('gameBoard[5]');
-    $("#botLeft").html('gameBoard[6]');
-    $("#botMid").html('gameBoard[7]');
-    $("#botRight").html('gameBoard[8]');
+    // $("#topLeft").html('gameBoard[0]');
+    // $("#topMid").html('gameBoard[1]');
+    // $("#topRight").html('gameBoard[2]');
+    // $("#midLeft").html('gameBoard[3]');
+    // $("#midMid").html('gameBoard[4]');
+    // $("#midRight").html('gameBoard[5]');
+    // $("#botLeft").html('gameBoard[6]');
+    // $("#botMid").html('gameBoard[7]');
+    // $("#botRight").html('gameBoard[8]');
     console.log(gameBoard[0] +'|' + gameBoard[1] +'|' + gameBoard[2]);
     console.log(gameBoard[3] +'|' + gameBoard[4] +'|' + gameBoard[5]);
     console.log(gameBoard[6] +'|' + gameBoard[7] +'|' + gameBoard[8]);
