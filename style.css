@@ -1,26 +1,55 @@
-#top{
-    border-bottom: 2px solid blue;
+*{
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    background-color: black;
 }
 
-#cen{
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.controls button{
+    margin:1%;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    display: block;
+}
+
+.cell{
+    font-size: 70px;
+    color: rgb(250, 65, 225);
+    width: 150px;
+    height: 150px;
+    border: 1px grey solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
+.top{
+    border-bottom: 2px solid blue;
+}
+.cen{
     border-left: 2px solid blue;
     border-right: 2px solid blue;
 }
-
-#bot{
+.bot{
     border-top: 2px solid blue;
-
 }
-
-#left{
+.left{
     border-right: 2px solid blue;
 }
-
-#mid{
+.mid{
     border-top: 2px solid blue;
     border-bottom: 2px solid blue;
 }
-
-#right{
+.right{
     border-left: 2px solid blue;
 }
+*/

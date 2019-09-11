@@ -1,54 +1,88 @@
 //global variables
 let highscores = [];
 
+//in game variables
+let winConditions = {
+    win0: [1,1,1,0,0,0,0,0,0],
+    win1: [0,0,0,1,1,1,0,0,0],
+    win2: [0,0,0,0,0,0,1,1,1],
+    win3: [1,0,0,1,0,0,1,0,0],
+    win4: [0,1,0,0,1,0,0,1,0],
+    win5: [0,0,1,0,0,1,0,0,1],
+    win6: [1,0,0,0,1,0,0,0,1],
+    win7: [0,0,1,0,1,0,1,0,0]
+};
+let gameBoard = [];
+let curPlayer = '';
+let playerOne = '';
+let playerTwo = '';
 
 //NEW GAME - create game board
-function newGame (player1, player2){
-    let playerOne = player1;
-    let playerTwo = player2;
-    // console.log("Player 1 is: " + playerOne);
-    // console.log("Player 2 is: " + playerTwo);
-    let curPlayer = playerOne;
+function newGame (player1, player2) {
+
+    playerOne = player1;
+    playerTwo = player2;
+    curPlayer = playerOne;
 
     //create array values for the game board
-    let gameBoard = [" "," "," "," "," "," "," "," "," "];
-    // let gameCells = ["#topLeft","#topMid","#topRight","#midLeft","#midMid","#midRight","#botLeft","#botMid","#botRight" ];
-
-    // $("#topLeft").html('gameBoard[0]');
-    // $("#topMid").html('gameBoard[1]');
-    // $("#topRight").html('gameBoard[2]');
-    // $("#midLeft").html('gameBoard[3]');
-    // $("#midMid").html('gameBoard[4]');
-    // $("#midRight").html('gameBoard[5]');
-    // $("#botLeft").html('gameBoard[6]');
-    // $("#botMid").html('gameBoard[7]');
-    // $("#botRight").html('gameBoard[8]');
-    console.log(gameBoard[0] +'|' + gameBoard[1] +'|' + gameBoard[2]);
-    console.log(gameBoard[3] +'|' + gameBoard[4] +'|' + gameBoard[5]);
-    console.log(gameBoard[6] +'|' + gameBoard[7] +'|' + gameBoard[8]);
-    return;
+    gameBoard = [" "," "," "," "," "," "," "," "," "];
+    
 }
 
-MAKE MOVE - assign an input value to the gameboard array
-function makeMove (curPlayer, cell){
-    let curPlayer = playerOne;
-    //set symbol based on who is current player
-    if (curPlayer === player1){
-        let symbol = 'X';
-        } else {
-        let symbol = 'O';
-    }
+//MAKE MOVE - players can assign a symbolto a cell
+function makeMove(cell){
+    // turnery operator
+    // (condition) ? trueStatement : falseStatement;
+    let symbol = curPlayer === playerOne ? 'X' : 'O';
+
     //assign symbol to cell value
-    let gameboard[cell] = symbol;
+    cell.html(symbol);
+
+    // Check win
+    CheckWin();
+    // TODO:
+    // change curPlayer to be the other one.
+    playerSwap();
+}
+//CHECK WIN - compare gameboard to the win conditions
+function CheckWin() {
+    // TODO: insert logic here
+    let tempArr = arr;
+    //convert gameboard arr holder to 1s and 0s
+    // use this to compare against win conditions
+    if (curPlayer === fstPlayer){
+        for (i in tempArr){
+            if (i === 'X'){
+                arr[i] = 1;
+            } else {
+                arr[i] = 0;
+            }
+        }
+    } else {
+        for (i in tempArr){
+            if (i === 'O'){
+                arr[i] = 1;
+            } else {
+                arr[i] = 0;
+            }
+        }
+    }
+}
+//SWAP PLAYERS - swap players at the end of  
+function playerSwap(){
+    if (curPlayer === playerOne){
+        curPlayer = playerTwo;
+    } else {
+        curPlayer = playerOne;
+    }
 }
 
+$('.cell').click(function() {
+    // we have clicked on the cell
+    // get the dom element that we clicked on, and pass it to our "makeMove" function
+    let theClickedCell = $(this);
+    makeMove(theClickedCell);
+});
 
-//WIN CHECK - check if a win is possible
 
 
-
-// GAME RESET - clear the game board and 
-
-
-
-newGame('Mick', 'Dave');

@@ -1,0 +1,39 @@
+.container{
+    margin: auto;
+    width: 900px;
+
+}
+
+.cell{
+    width: 200px;
+    height: 200px;
+}
+
+.top{
+    border-bottom: 2px solid blue;
+    display: inline;
+}
+.cen{
+    border-left: 2px solid blue;
+    border-right: 2px solid blue;
+    display: inline;
+}
+.bot{
+    border-top: 2px solid blue;
+    display: inline;
+}
+.left{
+    border-right: 2px solid blue;
+    display: inline;
+}
+.mid{
+    border-top: 2px solid blue;
+    border-bottom: 2px solid blue;
+    display: inline;
+}
+.right{
+    border-left: 2px solid blue;
+    display: inline;
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */

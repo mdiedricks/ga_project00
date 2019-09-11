@@ -30,6 +30,7 @@ const Game = function (player1, player2){
         this.gameBoard[input] = symbol;
         return;
     };
+    
     //function to check if a win combination is achieved
     this.checkWin = function(arr){
         let tempArr = arr;

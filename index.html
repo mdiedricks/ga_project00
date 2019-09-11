@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+        <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <style rel="stylesheet" href="style.css"></style>
+    <link  rel="stylesheet" href="style.css" type="text/css">
 
 </head>
 
@@ -11,21 +12,35 @@
         <div class="title">
             <h1>Tic Tac Toe</h1>
         </div>
+    </div>
 
-        <div id="grid">
-            <div id="topLeft" class="left top"></div>
-            <div id="topMid" class="mid top"></div>
-            <div id="topRight" class="right top"></div>
+    <div class="container controls">
+        <button id="new-game">New Game</button>
+        <button id="high-scores">High Scores</button>
+    </div>
 
-            <div id="cenLeft" class="left cen"></div>
-            <div id="cenMid" class="cen mid"></div>
-            <div id="cenRight" class="right cen"></div>
 
-            <div id="botLeft" class="left bot"></div>
-            <div id="botMid" class="mid bot"></div>
-            <div id="botRight" class="right bot"></div>
+
+    <div class="container">
+        <div class="row">
+            <div id="topLeft" class="zero cell"></div>
+            <div id="topMid" class="one cell"></div>
+            <div id="topRight" class="two cell"></div>
+        </div>
+        
+        <div class="row">
+            <div id="cenLeft" class="three cell"></div>
+            <div id="cenMid" class="four cell"></div>
+            <div id="cenRight" class="five cell"></div>
+        </div>
+
+        <div class="row">
+            <div id="botLeft" class="six cell"></div>
+            <div id="botMid" class="seven cell"></div>
+            <div id="botRight" class="eight cell"></div>
         </div>
     </div>
+    
 
     <script src="script2.js"></script>
 </body>
