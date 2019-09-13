@@ -7,6 +7,7 @@
 .container{
     display: flex;
     justify-content: center;
+
 }
 
 .controls button{
@@ -14,11 +15,16 @@
     padding: 10px;
 }
 
+.grid{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .row{
     display: flex;
     justify-content: center;
-    display: block;
+    flex-direction: row;
 }
 
 .cell{
