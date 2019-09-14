@@ -19,9 +19,12 @@ let cellArr = ['#topLeft','#topMid','#topRight','#cenLeft','#cenMid','#cenRight'
 let curPlayer = '';
 let playerOne = 'Player X';
 let playerTwo = 'Player O';
+let checkWinCount = 9;
 
 //NEW GAME - create game board
 function newGame (player1, player2) {
+    //set win checker to 0
+    checkWinCount = 0;
     //engage game mode
     gameMode = true;
     //assign player names to global variables
@@ -75,23 +78,32 @@ function checkWin() {
     let tempArr2 = gameBoard.map(function(value) {
         return symbol === value ? 1 : 0;
     });
-
+    
     //check tempArr against win conditions arrays
-    for (i in winConditions){
-
-        if(JSON.stringify(tempArr2) == JSON.stringify(winConditions[i])){
-            console.log("Winner!")
+    for (i in winConditions){    
+        if(JSON.stringify(tempArr2) === JSON.stringify(winConditions[i])){
             gameMode = false;
             winner();
         }
     };
+    checkWinCount += 1;
+    console.log(checkWinCount);
+    if (checkWinCount === 9){
+        drawMatch();
+        console.log("It's a draw!")
+    }
 }
 
 //WINNER - run the winner function
 function winner(){
-    $('.pop-up').html(curPlayer + ' is the victorious!');
+    $('.pop-up').html(curPlayer + " is victorious! <br><br> Press 'New Game' to play again");
     $('.pop-up').css("visibility", "visible");
 };
+
+function drawMatch(){
+    $('.pop-up').html("It's a draw! <br><br> Press 'New Game' to play again");
+    $('.pop-up').css("visibility", "visible");
+}
 
 // function mouseOver(cell){
 //     let symbol = curPlayer === playerOne ? 'X' : 'O'; 
