@@ -34,10 +34,12 @@ function newGame (player1, player2) {
 
     //create array values for the game board
     gameBoard = [" "," "," "," "," "," "," "," "," "];
+
+
     //assign gameBoard values to values in html divs
-    // for (i = 0; i < cellArr.length; i++){
-    //     $(celArr[i]).html(gameboard[i])
-    // }
+    for (i = 0; i < cellArr.length; i++){
+         $(celArr[i]).html(gameboard[i])
+    }
 
     $('#topLeft').html(gameBoard[0]);
     $('#topMid').html(gameBoard[1]);
@@ -60,7 +62,7 @@ function makeMove(cell, cellID){
     let cellHash = '#' + cellID;
     //TO-DO: assign symbol to holder array for win check
     holderArr[cellArr.indexOf(cellHash)] = symbol;    
-    console.log(holderArr);
+    console.log('The holder array is: ' + holderArr);
     //Check if a win condition has been achieved
     checkWin();
     // change curPlayer to be the other one.
@@ -68,8 +70,8 @@ function makeMove(cell, cellID){
 }
 
 //SWAP PLAYERS - swap players at the end of  
-function playerSwap(currentP){
-    if (currentP === playerOne){
+function playerSwap(a_currentP){
+    if (a_currentP === playerOne){
         curPlayer = playerTwo;
     } else {
         curPlayer = playerOne;
@@ -78,29 +80,29 @@ function playerSwap(currentP){
 
 //CHECK WIN - compare gameboard to the win conditions
 function checkWin() {
-    //assign holder to current array values
-    let tempArr = holderArr; 
-
+    let tempArr = [];
     //convert tempArr holder to 1s and 0s
     if (curPlayer === playerOne){
         for (i in holderArr){
             if (i === 'X'){
-                tempArr[i] = 1;
+                tempArr.push(1);
             } else {
-                tempArr[i] = 0;
+                tempArr.push(0);
             }
         }
     } else {
         for (i in holderArr){
             if (i === 'O'){
-                tempArr[i] = 1;
+                tempArr.push(1);
             } else {
-                tempArr[i] = 0;
+                tempArr.push(0);
             }
         }
     };
+ 
+    console.log('The temporary array is: ' + tempArr);
 
-    // TODO: insert logic here
+    //check tempArr against win conditions arrays
     for (i in winConditions){
         if (tempArr === winConditions[i]){
             console.log("Winner!")
