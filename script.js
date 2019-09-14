@@ -89,9 +89,8 @@ function checkWin() {
 
 //WINNER - run the winner function
 function winner(){
-    console.log(curPlayer + " is the winner!")
-    $('.winPlayer').html(curPlayer);
-    $('.winner').show();
+    $('.pop-up').html(curPlayer + ' is the victorious!');
+    $('.pop-up').css("visibility", "visible");
 };
 
 // function mouseOver(cell){
@@ -116,6 +115,7 @@ $('#new-game').click(function(){
     $("#vs").css("display", "block");
     $("#play1").html(p1 + ' (X)');
     $("#play2").html('(O) ' + p2);
+    $(".pop-up").css("visibility", "hidden");
     //then display the characters names on the board
 });
 
