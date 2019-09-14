@@ -24,19 +24,21 @@ let playerTwo = '';
 function newGame (player1, player2) {
     //engage game mode
     gameMode = true;
-    //hide win div
-    $('.winner').hide();
     //assign player names to global variables
     playerOne = player1;
     playerTwo = player2;
+    //reset player 1 to be current player
+    curPlayer = playerOne;
 
     //T0-DO: assign values to html divs on screen
 
-    //reset player 1 to be current player
-    curPlayer = playerOne;
     //create array values for the game board
     gameBoard = [" "," "," "," "," "," "," "," "," "];
-    //assign these values to those inside the html
+    //assign gameBoard values to values in html divs
+    // for (i = 0; i < cellArr.length; i++){
+    //     $(celArr[i]).html(gameboard[i])
+    // }
+
     $('#topLeft').html(gameBoard[0]);
     $('#topMid').html(gameBoard[1]);
     $('#topRight').html(gameBoard[2]);
@@ -49,22 +51,18 @@ function newGame (player1, player2) {
 }
 
 //MAKE MOVE - players can assign a symbol to a cell
-function makeMove(cell, cellValue){
+function makeMove(cell, cellID){
     // turnery operator -- (condition) ? trueStatement : falseStatement;    
     let symbol = curPlayer === playerOne ? 'X' : 'O'; 
     //assign symbol to cell value
     cell.html(symbol);
-
-
+    //concatenate cellID with a hash
+    let cellHash = '#' + cellID;
     //TO-DO: assign symbol to holder array for win check
-    holderArr[cellArr.indexOf(cellValue)] = symbol;
+    holderArr[cellArr.indexOf(cellHash)] = symbol;    
     console.log(holderArr);
-    console.log(cellArr);
-    console.log(cellValue);
-    
-    
-    //TO-DO: Check if a win condition has been achieved
-    CheckWin();
+    //Check if a win condition has been achieved
+    checkWin();
     // change curPlayer to be the other one.
     playerSwap(curPlayer);
 }
@@ -79,7 +77,7 @@ function playerSwap(currentP){
 }
 
 //CHECK WIN - compare gameboard to the win conditions
-function CheckWin() {
+function checkWin() {
     //assign holder to current array values
     let tempArr = holderArr; 
 
@@ -101,7 +99,6 @@ function CheckWin() {
             }
         }
     };
-    //console.log(tempArr);
 
     // TODO: insert logic here
     for (i in winConditions){
@@ -146,9 +143,9 @@ $('.cell').click(function() {
     // we have clicked on the cell
     // get the dom element that we clicked on, and pass it to our "makeMove" function
     let theClickedCell = $(this);
-    let cellClass = $(this).attr('id');
+    let cellID = $(this).attr('id');
     if (theClickedCell.html() === " "){
-        makeMove(theClickedCell, cellClass);
+        makeMove(theClickedCell, cellID);
         }
     }
 });
