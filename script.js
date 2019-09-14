@@ -15,10 +15,10 @@ let winConditions = [
 let gameMode = false;
 let gameBoard = [];
 let cellArr = ['#topLeft','#topMid','#topRight','#cenLeft','#cenMid','#cenRight','#botLeft','#botMid','#botRight']
-let holderArr = [" "," "," "," "," "," "," "," "," "]
+//let holderArr = [" "," "," "," "," "," "," "," "," "]
 let curPlayer = '';
-let playerOne = '';
-let playerTwo = '';
+let playerOne = 'Player X';
+let playerTwo = 'Player O';
 
 //NEW GAME - create game board
 function newGame (player1, player2) {
@@ -29,27 +29,12 @@ function newGame (player1, player2) {
     playerTwo = player2;
     //reset player 1 to be current player
     curPlayer = playerOne;
-
-    //T0-DO: assign values to html divs on screen
-
     //create array values for the game board
     gameBoard = [" "," "," "," "," "," "," "," "," "];
-
-
     //assign gameBoard values to values in html divs
     for (i = 0; i < cellArr.length; i++){
-         $(celArr[i]).html(gameboard[i])
+         $(cellArr[i]).html(gameBoard[i]);
     }
-
-    $('#topLeft').html(gameBoard[0]);
-    $('#topMid').html(gameBoard[1]);
-    $('#topRight').html(gameBoard[2]);
-    $('#cenLeft').html(gameBoard[3]);
-    $('#cenMid').html(gameBoard[4]);
-    $('#cenRight').html(gameBoard[5]);
-    $('#botLeft').html(gameBoard[6]);
-    $('#botMid').html(gameBoard[7]);
-    $('#botRight').html(gameBoard[8]);
 }
 
 //MAKE MOVE - players can assign a symbol to a cell
@@ -61,8 +46,7 @@ function makeMove(cell, cellID){
     //concatenate cellID with a hash
     let cellHash = '#' + cellID;
     //TO-DO: assign symbol to holder array for win check
-    holderArr[cellArr.indexOf(cellHash)] = symbol;    
-    console.log('The holder array is: ' + holderArr);
+    gameBoard[cellArr.indexOf(cellHash)] = symbol;    
     //Check if a win condition has been achieved
     checkWin();
     // change curPlayer to be the other one.
@@ -80,31 +64,22 @@ function playerSwap(a_currentP){
 
 //CHECK WIN - compare gameboard to the win conditions
 function checkWin() {
-    let tempArr = [];
-    //convert tempArr holder to 1s and 0s
-    if (curPlayer === playerOne){
-        for (i in holderArr){
-            if (i === 'X'){
-                tempArr.push(1);
-            } else {
-                tempArr.push(0);
-            }
-        }
-    } else {
-        for (i in holderArr){
-            if (i === 'O'){
-                tempArr.push(1);
-            } else {
-                tempArr.push(0);
-            }
-        }
-    };
- 
-    console.log('The temporary array is: ' + tempArr);
+    let symbol = curPlayer === playerOne ? 'X' : 'O';
+    /*
+        use map to convert a game board state
+        based on the current player symbol
+        [ 'X', 'O', ' ', ' ', ' ', ' ', ' ' , ' ' , ' ' ];
+        [ 1,   0,   0,   0,   0,   0,   0,    0,    0]
+    */
+
+    let tempArr2 = gameBoard.map(function(value) {
+        return symbol === value ? 1 : 0;
+    });
 
     //check tempArr against win conditions arrays
     for (i in winConditions){
-        if (tempArr === winConditions[i]){
+
+        if(JSON.stringify(tempArr2) == JSON.stringify(winConditions[i])){
             console.log("Winner!")
             gameMode = false;
             winner();
@@ -137,6 +112,10 @@ $('#new-game').click(function(){
     //run a function to clear the board and assign new players names to the game
     newGame(p1, p2);
     //hide the name inputs
+    $("input").css("display", "none");
+    $("#vs").css("display", "block");
+    $("#play1").html(p1 + ' (X)');
+    $("#play2").html('(O) ' + p2);
     //then display the characters names on the board
 });
 
