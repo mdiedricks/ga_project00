@@ -1,17 +1,6 @@
 //global variables
 let highscores = [];
 
-//in game variables
-let winConditions = [
-    [1,1,1,0,0,0,0,0,0],
-    [0,0,0,1,1,1,0,0,0],
-    [0,0,0,0,0,0,1,1,1],
-    [1,0,0,1,0,0,1,0,0],
-    [0,1,0,0,1,0,0,1,0],
-    [0,0,1,0,0,1,0,0,1],
-    [1,0,0,0,1,0,0,0,1],
-    [0,0,1,0,1,0,1,0,0]
-];
 let gameMode = false;
 let gameBoard = [];
 let cellArr = ['#topLeft','#topMid','#topRight','#cenLeft','#cenMid','#cenRight','#botLeft','#botMid','#botRight']
@@ -20,9 +9,11 @@ let curPlayer = '';
 let playerOne = 'Player X';
 let playerTwo = 'Player O';
 let checkWinCount = 9;
+let gameWon = false;
 
 //NEW GAME - create game board
 function newGame (player1, player2) {
+    gameWon = false;
     //set win checker to 0
     checkWinCount = 0;
     //engage game mode
@@ -48,8 +39,15 @@ function makeMove(cell, cellID){
     cell.html(symbol);
     //concatenate cellID with a hash
     let cellHash = '#' + cellID;
-    //TO-DO: assign symbol to holder array for win check
-    gameBoard[cellArr.indexOf(cellHash)] = symbol;    
+    //assign symbol to holder array for win check
+    //gameBoard[cellArr.indexOf(cellHash)] = symbol;    
+    //TEST: build gameboard values with 1 and -1
+    if (symbol === 'X'){
+        gameBoard[cellArr.indexOf(cellHash)] = 1;
+    } else {
+        gameBoard[cellArr.indexOf(cellHash)] = -1;
+    }
+    console.log(gameBoard);
     //Check if a win condition has been achieved
     checkWin();
     // change curPlayer to be the other one.
@@ -68,34 +66,38 @@ function playerSwap(a_currentP){
 //CHECK WIN - compare gameboard to the win conditions
 function checkWin() {
     let symbol = curPlayer === playerOne ? 'X' : 'O';
-    /*
-        use map to convert a game board state
-        based on the current player symbol
-        [ 'X', 'O', ' ', ' ', ' ', ' ', ' ' , ' ' , ' ' ];
-        [ 1,   0,   0,   0,   0,   0,   0,    0,    0]
-    */
 
-    let tempArr2 = gameBoard.map(function(value) {
-        return symbol === value ? 1 : 0;
-    });
-    
-    //check tempArr against win conditions arrays
-    for (i in winConditions){    
-        if(JSON.stringify(tempArr2) === JSON.stringify(winConditions[i])){
-            gameMode = false;
-            winner();
-        }
-    };
+    if (Math.abs(gameBoard[0] + gameBoard[1] + gameBoard[2]) === 3){
+        gameWon = true; 
+    } else if (Math.abs(gameBoard[3] + gameBoard[4] + gameBoard[5]) === 3){
+        gameWon = true;  
+    } else if(Math.abs(gameBoard[6] + gameBoard[7] + gameBoard[8]) === 3){
+        gameWon = true;  
+    } else if(Math.abs(gameBoard[0] + gameBoard[3] + gameBoard[6]) === 3){
+        gameWon = true;
+    } else if(Math.abs(gameBoard[1] + gameBoard[4] + gameBoard[7]) === 3){
+        gameWon = true;
+    } else if(Math.abs(gameBoard[2] + gameBoard[5] + gameBoard[8]) === 3){
+        gameWon = true; 
+    } else if(Math.abs(gameBoard[0] + gameBoard[4] + gameBoard[8]) === 3){
+        gameWon = true;
+    } else if(Math.abs(gameBoard[2] + gameBoard[4] + gameBoard[6]) === 3){
+    } 
+
+    if (gameWon){
+        winner();
+    }
+
     checkWinCount += 1;
     console.log(checkWinCount);
     if (checkWinCount === 9){
         drawMatch();
-        console.log("It's a draw!")
     }
 }
 
 //WINNER - run the winner function
 function winner(){
+    gameMode = false;
     $('.pop-up').html(curPlayer + " is victorious! <br><br> Press 'New Game' to play again");
     $('.pop-up').css("visibility", "visible");
 };
