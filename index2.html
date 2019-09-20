@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <link  rel="stylesheet" href="style2.css" type="text/css">
+
+</head>
+
+<body>    
+    <div class="controls">
+            <button id="new-game">New Game</button>
+            <button id="high-scores">High Scores</button>
+        <p class="copyright">TM AND &copy; 1987 <br>
+            KONAMU INDUSTRY CO. LTD. LICENSED BY <br>
+            NINTENDO OF AUSTRALIA INC.
+        </p>
+    </div>
+
+    <div class="pop-up">
+        <span>Enter player names,<br><br>then press 
+            <span class="grn-text">"New Game"</span>
+        </span>
+        <div class="name-input">
+            <input id="player-one" type="text" value="Player 1" size="9"></input>
+            <input id="player-two" type="text" value="Player 2" size="9"></input>
+        </div>
+    </div>
+
+<!-- MAIN BODY STARTS HERE -->
+
+    <div class="container">
+        <div class="title">
+            <span class="subtitle">KONAMU</span>
+            <span class="game-title">Tic Tac <br>Toe</span>
+        </div>
+    </div>
+
+    <div class="container player-names" >
+        <span id="vs">
+            <span id="play1"></span>
+            <span>vs.</span>
+            <span id="play2"></span>
+        </span>
+    </div>
+
+    <div class="grid">
+
+        <div class="row">
+            <div id="topLeft" class="cell"></div>
+            <div id="topMid" class="cell"></div>
+            <div id="topRight" class="cell"></div>
+        </div>
+        <div class="row">
+            <div id="cenLeft" class="cell"></div>
+            <div id="cenMid" class="cell"></div>
+            <div id="cenRight" class="cell"></div>
+        </div>
+        <div class="row">
+            <div id="botLeft" class="cell"></div>
+            <div id="botMid" class="cell"></div>
+            <div id="botRight" class="cell"></div>
+        </div>
+    </div>
+    
+    <script src="script2.js"></script>
+</body>
+</html>

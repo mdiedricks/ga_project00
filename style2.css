@@ -4,7 +4,7 @@
 }
 body{
     background-color: black;
-    background-image: url("https://66.media.tumblr.com/a818df2d2aa93a68b129c9d41132cd7e/tumblr_oetmprsX7G1sk0xezo1_400.gif");
+    background-image: url("http://www.sclance.com/backgrounds/8-bit-background-tumblr/8-bit-background-tumblr_29786.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -24,20 +24,74 @@ body{
 .game-title{
     color: #a6ec2f;
     text-shadow:  2px 2px #fbfbfb;
-    font-size: 40px;
+    font-size: 60px;
     margin: 5px 0 5px 0;
+    text-align: center;
 }
 .controls{
+    padding: 20px;
+    z-index: 4;
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 500px;
+
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+}
+
+.pop-up{
+    z-index: 5;
+    padding: 20px;
+    position: fixed;
+    top: 300px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    visibility: hidden;
+    width: 500px;
+
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: black;
+    color: white;
+}
+
+.name-input{
+    flex-direction: row;
+    padding: 20px;
+}
+
+input{
+    color: black;
+    display: inline;
+}
+
+.wrapper{
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
     padding: 10px;
 }
+
 button{
     background-color: black;
     color:  #a6ec2f;
     padding: 10px;
     width: 180px;
-    border-radius: 3px;
-    margin-left: 10px;
-    margin-right: 10px;
+    border-radius: 3px; 
 }
 button:hover {
     background-color: #a6ec2f;
@@ -70,22 +124,6 @@ button:hover {
     flex-direction: column;
 }
 
-.pop-up{
-    z-index: 5;
-    position: fixed;
-    top: 300px;;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 30px;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-
-    border: 2px solid white;
-    border-radius: 8px;
-    background-color: black;
-    color: white;
-}
 
 .grn-text{
     color: #a6ec2f;
@@ -95,6 +133,7 @@ button:hover {
     display: flex;
     justify-content: center;
     flex-direction: row;
+    visibility: hidden;
 }
 
 .cell{
@@ -110,13 +149,8 @@ button:hover {
     box-shadow: -3px -3px 0px rgb(223, 223, 223) inset;
 }
 
-footer{
-    display: flex;
-    justify-content: center;
-}
-footer p{
-    text-align: center;
-}
 .copyright{
+    padding: 20px;
     font-size: 10px;
+    text-align: center;
 }

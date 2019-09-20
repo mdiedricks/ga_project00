@@ -10,10 +10,13 @@ let playerOne = 'Player X';
 let playerTwo = 'Player O';
 let checkWinCount = 0;
 let gameWon = false;
-let hoverState = false;
 
 //NEW GAME - create game board
-function newGame (player1, player2) {
+function newGame () {  
+    return;
+}
+
+function startGame(player1, player2){
     gameWon = false;
     //set win checker to 0
     checkWinCount = 0;
@@ -24,10 +27,6 @@ function newGame (player1, player2) {
     playerTwo = player2;
     //reset player 1 to be current player
     curPlayer = playerOne;
-    
-    //TO-DO: REFACTOR BELOW WITHOUT GAMEBOARD ARRAY
-    //NON NEED FOR GAMEBOARD ARRAY, JUST USE .CELL AND " " EMPTY STRING
-
     //create array values for the game board
     gameBoard = [" "," "," "," "," "," "," "," "," "];
     //assign gameBoard values to values in html divs
@@ -46,16 +45,17 @@ function makeMove(cell, cellID){
     let cellHash = '#' + cellID;
     //assign symbol to holder array for win check
     //gameBoard[cellArr.indexOf(cellHash)] = symbol;    
+    //TEST: build gameboard values with 1 and -1
     if (symbol === 'X'){
         gameBoard[cellArr.indexOf(cellHash)] = 1;
     } else {
         gameBoard[cellArr.indexOf(cellHash)] = -1;
     }
+    console.log(gameBoard);
     //Check if a win condition has been achieved
     checkWin();
     // change curPlayer to be the other one.
     playerSwap(curPlayer);
-    hoverState = false;
 }
 
 //SWAP PLAYERS - swap players at the end of  
@@ -69,28 +69,34 @@ function playerSwap(a_currentP){
 
 //CHECK WIN - compare gameboard to the win conditions
 function checkWin() {
+    let symbol = curPlayer === playerOne ? 'X' : 'O';
+
     checkWinCount += 1;
     console.log(checkWinCount);
 
     if (Math.abs(gameBoard[0] + gameBoard[1] + gameBoard[2]) === 3){
-        winner(); 
+        gameWon = true; 
     } else if (Math.abs(gameBoard[3] + gameBoard[4] + gameBoard[5]) === 3){
-        winner();  
+        gameWon = true;  
     } else if(Math.abs(gameBoard[6] + gameBoard[7] + gameBoard[8]) === 3){
-        winner();  
+        gameWon = true;  
     } else if(Math.abs(gameBoard[0] + gameBoard[3] + gameBoard[6]) === 3){
-        winner();
+        gameWon = true;
     } else if(Math.abs(gameBoard[1] + gameBoard[4] + gameBoard[7]) === 3){
-        winner();
+        gameWon = true;
     } else if(Math.abs(gameBoard[2] + gameBoard[5] + gameBoard[8]) === 3){
-        winner(); 
+        gameWon = true; 
     } else if(Math.abs(gameBoard[0] + gameBoard[4] + gameBoard[8]) === 3){
-        winner();
+        gameWon = true;
     } else if(Math.abs(gameBoard[2] + gameBoard[4] + gameBoard[6]) === 3){
+    } 
+
+    if (gameWon){
         winner();
     } else if (checkWinCount === 9){
         drawMatch();
     }
+
     console.log("Winner not found");
 }
 
@@ -119,18 +125,23 @@ function drawMatch(){
 //JQUERY - 
 $('#new-game').click(function(){
     //we have clicked on the button for a new game
+    $(".pop-up").css("visibility", "visible");
+    $(".controls").css("visibility", "hidden");
+    //then display the characters names on the board
+});
+
+$('#start-game').click(function(){
     let p1 = $('#player-one').val();
     let p2 = $('#player-two').val();
     //run a function to clear the board and assign new players names to the game
-    newGame(p1, p2);
+    startGame(p1, p2);
     //hide the name inputs
     $("input").css("display", "none");
     $("#vs").css("display", "block");
     $("#play1").html(p1 + ' (X)');
     $("#play2").html('(O) ' + p2);
     $(".pop-up").css("visibility", "hidden");
-    //then display the characters names on the board
-});
+})
 
 $('.cell').click(function() {
     if (gameMode){
@@ -144,21 +155,19 @@ $('.cell').click(function() {
     }
 });
 
-// //query to preview the text in cell
+//query to preview the text in cell
 // $('.cell').mouseover(function() {
 //     if (gameMode){
-//         let theClickedCell = $(this);
-//         if (theClickedCell.html() === " "){
-//             mouseOver(theClickedCell);
-//             }
+//     let theClickedCell = $(this);
+//     if (theClickedCell.html() === " "){
+//         mouseOver(theClickedCell);
+//         }
 //     }
-    
 // });
 // //query to preview the text in cell
 // $('.cell').mouseout(function() {
 //     if (gameMode){
-//         let theClickedCell = $(this);
+//     let theClickedCell = $(this);
 //         mouseOut(theClickedCell);
 //     }
-    
 // });
