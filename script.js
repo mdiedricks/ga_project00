@@ -4,13 +4,12 @@ let highscores = [];
 let gameMode = false;
 let gameBoard = [];
 let cellArr = ['#topLeft','#topMid','#topRight','#cenLeft','#cenMid','#cenRight','#botLeft','#botMid','#botRight']
-//let holderArr = [" "," "," "," "," "," "," "," "," "]
 let curPlayer = '';
 let playerOne = 'Player X';
 let playerTwo = 'Player O';
 let checkWinCount = 0;
 let gameWon = false;
-let hoverState = false;
+let thisCellEmpty = false;
 
 //NEW GAME - create game board
 function newGame (player1, player2) {
@@ -51,11 +50,13 @@ function makeMove(cell, cellID){
     } else {
         gameBoard[cellArr.indexOf(cellHash)] = -1;
     }
+    //change colour of symbol to pink from grey
+    cell.css("color", "rgb(250, 65, 225)") 
     //Check if a win condition has been achieved
     checkWin();
     // change curPlayer to be the other one.
     playerSwap(curPlayer);
-    hoverState = false;
+    thisCellEmpty = false;
 }
 
 //SWAP PLAYERS - swap players at the end of  
@@ -106,15 +107,15 @@ function drawMatch(){
     $('.pop-up').css("visibility", "visible");
 }
 
-// function mouseOver(cell){
-//     let symbol = curPlayer === playerOne ? 'X' : 'O'; 
-//     cell.html(symbol);
-//     cell.css("color", "grey")    
-// }
+function mouseOver(cell){
+    let symbol = curPlayer === playerOne ? 'X' : 'O'; 
+    cell.html(symbol);
+    cell.css("color", "grey")    
+}
 
-// function mouseOut(cell){
-//     cell.html(" ");     
-// }
+function mouseOut(cell){
+    cell.html(" ");     
+}
 
 //JQUERY - 
 $('#new-game').click(function(){
@@ -138,27 +139,28 @@ $('.cell').click(function() {
     // get the dom element that we clicked on, and pass it to our "makeMove" function
     let theClickedCell = $(this);
     let cellID = $(this).attr('id');
-    if (theClickedCell.html() === " "){
+    if (thisCellEmpty){
         makeMove(theClickedCell, cellID);
         }
     }
 });
 
-// //query to preview the text in cell
-// $('.cell').mouseover(function() {
-//     if (gameMode){
-//         let theClickedCell = $(this);
-//         if (theClickedCell.html() === " "){
-//             mouseOver(theClickedCell);
-//             }
-//     }
+//query to preview the text in cell
+$('.cell').mouseover(function() {
+    if (gameMode){
+        let theClickedCell = $(this);
+        if (theClickedCell.html() === " "){
+            thisCellEmpty = true;
+            mouseOver(theClickedCell);
+            }
+    }
     
-// });
-// //query to preview the text in cell
-// $('.cell').mouseout(function() {
-//     if (gameMode){
-//         let theClickedCell = $(this);
-//         mouseOut(theClickedCell);
-//     }
+});
+//query to preview the text in cell
+$('.cell').mouseout(function() {
+    if (gameMode && thisCellEmpty){
+        let theClickedCell = $(this);
+        mouseOut(theClickedCell);
+    }
     
-// });
+});
