@@ -71,7 +71,6 @@ function playerSwap(a_currentP){
 //CHECK WIN - compare gameboard to the win conditions
 function checkWin() {
     checkWinCount += 1;
-    console.log(checkWinCount);
 
     if (Math.abs(gameBoard[0] + gameBoard[1] + gameBoard[2]) === 3){
         winner(); 
@@ -92,7 +91,6 @@ function checkWin() {
     } else if (checkWinCount === 9){
         drawMatch();
     }
-    console.log("Winner not found");
 }
 
 //WINNER - run the winner function
@@ -151,6 +149,7 @@ $('.cell').mouseover(function() {
         let theClickedCell = $(this);
         if (theClickedCell.html() === " "){
             thisCellEmpty = true;
+            console.log('this cell is empty');
             mouseOver(theClickedCell);
             }
     }
@@ -160,6 +159,8 @@ $('.cell').mouseover(function() {
 $('.cell').mouseout(function() {
     if (gameMode && thisCellEmpty){
         let theClickedCell = $(this);
+        thisCellEmpty= false;
+        console.log('that cell was empty');
         mouseOut(theClickedCell);
     }
     
