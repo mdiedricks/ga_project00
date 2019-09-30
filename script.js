@@ -68,6 +68,10 @@ function playerSwap(a_currentP){
     }
 }
 
+
+//TO-DO: tjpekfe
+
+
 //CHECK WIN - compare gameboard to the win conditions
 function checkWin() {
     checkWinCount += 1;
