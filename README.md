@@ -1,49 +1,26 @@
-## Purpose
+# 8Bit Tic Tac Toe
+> This was my first assignment completed for my bootcamp at General Assembly. 
 
-This was my first assignment completed for my bootcamp at General Assembly. And it demonstrates my early expedition into the world of jQuery, HTML and CSS. 
+## Table of Contents
+* [General Information](#general-information)
+* [Technology Used](#technology-used)
+* [Project Status](#project-status)
+* [Acknowledgements](#acknowledgements)
+
+## General Information
+We all had to make a TicTacToe game, and I chose to build mine referencing the 8Bit style of 80s games.
 
 The theme was an homage to games I played as a child, and speak to my enjoyment of the earlier development of video games and the accompanying style.
 
+## Technology Used
+Good old HTML, CSS and jQuery
 
-## Hosting and Development
+## Project Status
+This project was completed in week 6 of a 26 week course.
 
-The project is hosted via github pages.
-Go have a play if you like!
+## Acknowledgements
+#### Tutors
+Fede Lopez, Aaron Cox, Yianni Moustakas
 
-## Available Scripts
-
-The program is pretty simple comprising of a single html file, with an accompanying css and javscript file. 
-
-### Functions
-
-`newGame`
-
-This sets the state of the game, resets the win counter and renames the players to default names.
-
-`makeMove`
-
-This checks if a cell already has a character stored in it. If the cell is free, it chekcs who the current player is, and assigns that players character to the cell.
-
-`playerSwap` 
-
-This checks who the current player is, and then reassigns the state value to the next player.
-
-`checkWin`
-
-Each time a move has been made, this checks the current state of the cell array and assesses whether the player who has just made the move has won.
-
-`winner`
-
-Once a winning array combination has been achieved, this ends the game, and displays the name of the winner.
-
-`drawMatch`
-
-If a draw array combination results, this ends the game announcing the draw.
-
-`mouseOver`
-
-This checks if a cell has a character in it, and if the cell is empty, displays a preview of the current players character in grey.
-
-`mouseOut`
-
-This remove the previewed character from the cell that the mouse was just over.
+#### Bootcamp
+[General Assembly](http://generalassemb.ly)
